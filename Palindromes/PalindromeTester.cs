@@ -1,30 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Palindromes
 {
     public class PalindromeTester
     {
-        public object IsPalindrome(string value)
+        public bool Check(string palindrome)
         {
-            int min = 0;
-            int max = value.Length - 1;
-            while (true)
-            {
-                if (min > max)
-                {
-                    return true;
-                }
-                char a = value[min];
-                char b = value[max];
-                if (char.ToLower(a) != char.ToLower(b))
-                {
-                    return false;
-                }
-                min++;
-                max--;
-            }
+
+            var palindromeClean = Regex.Replace(palindrome, "[^A-Za-z0-9]", "");
+            var first = palindromeClean.Substring(0, palindromeClean.Length / 2).ToLower();
+            char[] arr = palindromeClean.ToCharArray();
+
+            Array.Reverse(arr);
+
+            string temp = new string(arr);
+            var second = temp.Substring(0, temp.Length / 2);
+
+            return first.Equals(second);
         }
     }
 }

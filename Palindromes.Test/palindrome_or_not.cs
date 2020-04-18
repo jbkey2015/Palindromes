@@ -14,7 +14,7 @@ namespace Palindromes.Test
             var palindromeTester = new PalindromeTester();
 
             //Act
-            var actualResult = palindromeTester.IsPalindrome(palindrome);
+            var actualResult = palindromeTester.Check(palindrome);
 
             //Assert
             Assert.Equal(expectedResult, actualResult);
@@ -30,11 +30,24 @@ namespace Palindromes.Test
             var palindromeTester = new PalindromeTester();
 
             //Act
-            var actualResult = palindromeTester.IsPalindrome(palindrome);
+            var actualResult = palindromeTester.Check(palindrome);
 
             //Assert
             Assert.Equal(expectedResult, actualResult);
 
+        }
+
+        [Fact]
+        public void somemen_palindrome_or_not()
+        {
+            var palindrome = "Some men interpret nine memos";
+            var expectedResult = true;
+
+            var palindromeChecker = new PalindromeTester();
+
+            var actualResult = palindromeChecker.Check(palindrome);
+
+            Assert.Equal(expectedResult, actualResult);
         }
     }
 }
